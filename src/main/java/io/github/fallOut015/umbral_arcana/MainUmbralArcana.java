@@ -1,9 +1,14 @@
 package io.github.fallOut015.umbral_arcana;
 
+import io.github.fallOut015.umbral_arcana.client.particle.ParticleManagerUmbralArcana;
+import io.github.fallOut015.umbral_arcana.client.registry.RenderingRegistryUmbralArcana;
 import io.github.fallOut015.umbral_arcana.client.renderer.RenderTypeLookupUmbralArcana;
+import io.github.fallOut015.umbral_arcana.level.entity.EntitiesUmbralArcana;
 import io.github.fallOut015.umbral_arcana.level.item.ItemsUmbralArcana;
 import io.github.fallOut015.umbral_arcana.level.world.block.BlocksUmbralArcana;
+import io.github.fallOut015.umbral_arcana.particles.ParticleTypesUmbralArcana;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +34,8 @@ public class MainUmbralArcana {
 
         BlocksUmbralArcana.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemsUmbralArcana.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EntitiesUmbralArcana.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ParticleTypesUmbralArcana.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -37,6 +44,7 @@ public class MainUmbralArcana {
     }
     private void doClientStuff(final FMLClientSetupEvent event) {
         RenderTypeLookupUmbralArcana.doClientStuff(event);
+        RenderingRegistryUmbralArcana.doClientStuff(event);
     }
     private void enqueueIMC(final InterModEnqueueEvent event) {
     }
@@ -46,5 +54,13 @@ public class MainUmbralArcana {
 
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
+    }
+
+    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+    public static class RegistryEvents {
+        @SubscribeEvent
+        public static void onParticleFactoryRegistry(final ParticleFactoryRegisterEvent event) {
+            ParticleManagerUmbralArcana.onParticleFactoryRegistry(event);
+        }
     }
 }

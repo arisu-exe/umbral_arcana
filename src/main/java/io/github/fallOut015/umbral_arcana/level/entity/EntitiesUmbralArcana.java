@@ -1,6 +1,7 @@
 package io.github.fallOut015.umbral_arcana.level.entity;
 
 import io.github.fallOut015.umbral_arcana.MainUmbralArcana;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraftforge.eventbus.api.IEventBus;

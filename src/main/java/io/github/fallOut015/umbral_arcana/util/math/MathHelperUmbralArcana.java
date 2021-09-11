@@ -1,5 +1,7 @@
 package io.github.fallOut015.umbral_arcana.util.math;
 
+import net.minecraft.util.math.MathHelper;
+
 public class MathHelperUmbralArcana {
     public static double quad(double x, double xint2, double max, int exp, boolean clamp) {
         double v = -max * Math.pow(((2 * x - xint2) / 2) / (xint2 / 2), exp) + max;
