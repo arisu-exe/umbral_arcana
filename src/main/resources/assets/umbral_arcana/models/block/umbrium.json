@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "umbral_arcana:block/umbrium_top",
+    "bottom": "umbral_arcana:block/umbrite",
+    "side": "umbral_arcana:block/umbrium_side"
+  }
+}

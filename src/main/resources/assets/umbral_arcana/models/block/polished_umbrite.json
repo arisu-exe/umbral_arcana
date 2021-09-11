@@ -1,0 +1,6 @@
+{
+  "parent" : "minecraft:block/cube_all",
+  "textures" : {
+    "all" : "umbral_arcana:block/polished_umbrite"
+  }
+}
