@@ -6,19 +6,20 @@ import io.github.fallOut015.umbral_arcana.level.entity.SigilEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.entity.Entity;
 
-public class SigilGlowingLayerModel<T extends SigilEntity> extends EntityModel<T> {
-    private ModelRenderer sigil;
+public class DiscTranslucentCullModel<T extends Entity> extends EntityModel<T> {
+    public ModelRenderer disc;
 
-    public SigilGlowingLayerModel() {
-        super(RenderType::eyes);
+    public DiscTranslucentCullModel() {
+        super(RenderType::entityTranslucentCull);
 
         this.texHeight = 64;
         this.texWidth = 128;
 
-        this.sigil = new ModelRenderer(this);
-        this.sigil.addBox(-32, 0, -32, 64, 0.0625f, 64);
-        this.sigil.setPos(0, 0, 0);
+        this.disc = new ModelRenderer(this);
+        this.disc.addBox(-32, 0, -32, 64, 0.0625f, 64);
+        this.disc.setPos(0, 0, 0);
     }
 
     @Override
@@ -26,6 +27,6 @@ public class SigilGlowingLayerModel<T extends SigilEntity> extends EntityModel<T
     }
     @Override
     public void renderToBuffer(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        this.sigil.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, blue, green, alpha);
+        this.disc.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
     }
 }

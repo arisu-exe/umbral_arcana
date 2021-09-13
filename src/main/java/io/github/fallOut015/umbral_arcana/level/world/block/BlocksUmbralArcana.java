@@ -18,7 +18,7 @@ public class BlocksUmbralArcana {
     public static final RegistryObject<Block> UMBRITE = BLOCKS.register("umbrite", () -> new Block(AbstractBlock.Properties.of(MaterialUmbralArcana.UMBRITE).strength(5.0f)));
     public static final RegistryObject<Block> POLISHED_UMBRITE = BLOCKS.register("polished_umbrite", () -> new Block(AbstractBlock.Properties.of(MaterialUmbralArcana.UMBRITE).strength(5.0f)));
     public static final RegistryObject<Block> UMBRIUM = BLOCKS.register("umbrium", () -> new Block(AbstractBlock.Properties.of(MaterialUmbralArcana.UMBRIUM).strength(4.0f)));
-    public static final RegistryObject<Block> GLOWCAPS = BLOCKS.register("glowcaps", () -> new Block(AbstractBlock.Properties.of(Material.PLANT).strength(2.0f).emissiveRendering((blockState, blockReader, blockPos) -> true).lightLevel((blockState) -> 2).noOcclusion()));
+    public static final RegistryObject<Block> GLOWCAPS = BLOCKS.register("glowcaps", () -> new Block(AbstractBlock.Properties.of(Material.PLANT).strength(2.0f).noCollission().emissiveRendering((blockState, blockReader, blockPos) -> true).lightLevel((blockState) -> 3).noOcclusion()));
 
 
 

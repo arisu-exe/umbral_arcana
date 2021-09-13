@@ -3,8 +3,8 @@ package io.github.fallOut015.umbral_arcana.client.renderer.entity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import io.github.fallOut015.umbral_arcana.MainUmbralArcana;
-import io.github.fallOut015.umbral_arcana.client.renderer.entity.model.SigilGlowingLayerModel;
-import io.github.fallOut015.umbral_arcana.client.renderer.entity.model.SigilModel;
+import io.github.fallOut015.umbral_arcana.client.renderer.entity.model.DiscEyesModel;
+import io.github.fallOut015.umbral_arcana.client.renderer.entity.model.DiscTranslucentCullModel;
 import io.github.fallOut015.umbral_arcana.level.entity.SigilEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
@@ -27,17 +27,17 @@ public class SigilRenderer extends EntityRenderer<SigilEntity> {
         TEXTURE_MAP.put(SUN, new ResourceLocation(MainUmbralArcana.MODID, SUN));
     }
 
-    private final SigilModel<SigilEntity> sigilModel1;
-    private final SigilModel<SigilEntity> sigilModel2;
-    private final SigilModel<SigilEntity> sigilModel3;
-    private final SigilGlowingLayerModel<SigilEntity> sigilGlowingLayerModel;
+    private final DiscTranslucentCullModel<SigilEntity> sigilModel1;
+    private final DiscTranslucentCullModel<SigilEntity> sigilModel2;
+    private final DiscTranslucentCullModel<SigilEntity> sigilModel3;
+    private final DiscEyesModel<SigilEntity> sigilGlowingLayerModel;
 
     public SigilRenderer(EntityRendererManager renderManager) {
         super(renderManager);
-        this.sigilModel1 = new SigilModel<>();
-        this.sigilModel2 = new SigilModel<>();
-        this.sigilModel3 = new SigilModel<>();
-        this.sigilGlowingLayerModel = new SigilGlowingLayerModel<>();
+        this.sigilModel1 = new DiscTranslucentCullModel<>();
+        this.sigilModel2 = new DiscTranslucentCullModel<>();
+        this.sigilModel3 = new DiscTranslucentCullModel<>();
+        this.sigilGlowingLayerModel = new DiscEyesModel<>();
     }
 
     @Override
@@ -54,9 +54,9 @@ public class SigilRenderer extends EntityRenderer<SigilEntity> {
         float scale = (float) entityIn.scale(entityIn.tickCount);
         matrixStackIn.scale(scale, 1f, scale);
         IVertexBuilder vertexbuilder = bufferIn.getBuffer(RenderType.entityTranslucentCull(this.getTextureLocation(entityIn)));
-        this.sigilModel1.sigil.yRot = (float) entityIn.tickCount / (float) entityIn.getRotationSpeed();
-        this.sigilModel2.sigil.yRot = ((float) entityIn.tickCount / (float) entityIn.getRotationSpeed()) * (2f / 3f);
-        this.sigilModel3.sigil.yRot = ((float) entityIn.tickCount / (float) entityIn.getRotationSpeed()) * (1f / 3f);
+        this.sigilModel1.disc.yRot = (float) entityIn.tickCount / (float) entityIn.getRotationSpeed();
+        this.sigilModel2.disc.yRot = ((float) entityIn.tickCount / (float) entityIn.getRotationSpeed()) * (2f / 3f);
+        this.sigilModel3.disc.yRot = ((float) entityIn.tickCount / (float) entityIn.getRotationSpeed()) * (1f / 3f);
         this.sigilModel1.renderToBuffer(matrixStackIn, vertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 0.7f);
         matrixStackIn.translate(0, 0.01f, 0);
         this.sigilModel2.renderToBuffer(matrixStackIn, vertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 0.8f);

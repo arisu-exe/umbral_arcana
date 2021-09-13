@@ -44,7 +44,7 @@ public class UmbralDustParticle extends SpriteTexturedParticle {
 
         this.alpha = (1f - interpolation) * 1.0f;
         this.quadSize = (1f - interpolation) * 0.1f;
-        this.roll += 0.0314f;
+        this.roll += 0.0314f * 2f;
     }
 
     @Override

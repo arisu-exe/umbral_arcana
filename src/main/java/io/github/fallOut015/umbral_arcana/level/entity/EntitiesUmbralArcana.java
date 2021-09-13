@@ -15,6 +15,7 @@ public class EntitiesUmbralArcana {
 
 
     public static final RegistryObject<EntityType<?>> SIGIL = ENTITIES.register("sigil", () -> EntityType.Builder.of(SigilEntity::new, EntityClassification.MISC).fireImmune().sized(4, 1).build("sigil"));
+    public static final RegistryObject<EntityType<?>> SHIELD = ENTITIES.register("shield", () -> EntityType.Builder.of(ShieldEntity::new, EntityClassification.MISC).fireImmune().sized(4, 4).build("shield"));
 
 
 
